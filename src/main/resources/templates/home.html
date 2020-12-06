@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>SpringDataBase</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h1>Widać komentarze, więc już działa...</h1>
+        
+        <form action="/newpost" method="POST">
+            Tytuł: <input type="text" name="title" size="150"/><p></p>
+            Treść: <textarea name="content" cols="150" rows="5"></textarea><p></p>
+            <input type="submit" value="Dodaj wpis" />
+        </form>
+        
+        <div th:each="post: ${posts}" th:object="${posts}" style="color:#666; font-family: Calibri; font-size: large">
+            <h3 th:text="${post.id} +'. ' +${post.title}"></h3>
+            <p th:text="${post.content}"></p>
+            <form action="/removepost" method="POST" >
+                <input type="submit" value="Usuń wpis"/>    
+            </form>
+            <hr/>
+        </div>
+        
+            
+    </body>
+</html>
