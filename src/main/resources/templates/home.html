@@ -19,7 +19,8 @@
         <div th:each="post: ${posts}" th:object="${posts}" style="color:#666; font-family: Calibri; font-size: large">
             <h3 th:text="${post.id} +'. ' +${post.title}"></h3>
             <p th:text="${post.content}"></p>
-            <form action="/removepost" method="POST" >
+            <form th:action="@{/removepost}" method="POST">
+                <input type="hidden" name="id" th:value="${post.id}"/>
                 <input type="submit" value="Usuń wpis"/>    
             </form>
             <hr/>

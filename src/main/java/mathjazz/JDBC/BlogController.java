@@ -28,7 +28,6 @@ public class BlogController {
     public String newPost(BlogPost post) throws SQLException {
         blogRepository.createPost(post);
         return "redirect:/";
-        
     }
     
     @PostMapping("/removepost")
